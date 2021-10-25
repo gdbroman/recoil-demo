@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import { RecoilRoot } from 'recoil';
 
-function App() {
+import { Canvas } from './components/Canvas';
+import { Sidebar } from './components/Sidebar/Sidebar';
+import { AppContainer, GlobalStyles } from './components/ui';
+import { ElementsContext } from './components/Element';
+
+const App: React.FC = () => {
+  const [elements, setElements] = useState<number[]>([]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ElementsContext.Provider value={{ elements, setElements }}>
+      <AppContainer>
+        <Sidebar />
+        <Canvas />
+        <GlobalStyles />
+      </AppContainer>
+    </ElementsContext.Provider>
+  );
+};
+
+function Root() {
+  return (
+    <RecoilRoot>
+      <App />
+    </RecoilRoot>
   );
 }
 
-export default App;
+export default Root;
