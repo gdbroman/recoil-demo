@@ -1,3 +1,3 @@
 # recoil-demo
 
-Clone the repo and run the app locally, or just visit https://recoil-demo.vercel.app
+Add as many rectangles as you wish, without performance ever taking a hit. Recoil is cool.
